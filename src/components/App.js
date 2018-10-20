@@ -6,6 +6,9 @@ import Shirts from './Shirts'
 import Pants from './Pants'
 import Shoes from './Shoes'
 import {ACCESSORIES_URL} from '../constants.js'
+import {SHIRTS_URL} from '../constants.js'
+import {PANTS_URL} from '../constants.js'
+import {SHOES_URL} from '../constants.js'
 
 class App extends Component {
   state = {
@@ -16,10 +19,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios
-    .get(`${ACCESSORIES_URL}`)
-    .then(res => this.setState({accessories: res.data.accessories}))
-    .catch (err => console.log(err))
+    axios.all([
+      axios.get(`${ACCESSORIES_URL}`),
+      axios.get(`${SHIRTS_URL}`),
+      axios.get(`${PANTS_URL}`),
+      axios.get(`${SHOES_URL}`)
+    ])
+    .then(axios.spread((accRes, shirtsRes, pantsRes, shoesRes) => {
+      this.setState({accessories: accRes.data.accessories})
+      this.setState({shirts: shirtsRes.data.shirts})
+      this.setState({pants: pantsRes.data.pants})
+      this.setState({shoes: shoesRes.data.shoes})
+    }))
   }
 
   render() {
