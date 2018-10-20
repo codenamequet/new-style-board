@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import App from './App'
+import About from './About'
 import Accessories from './Accessories'
 import Shirts from './Shirts'
 import Pants from './Pants'
@@ -10,7 +11,8 @@ import NotFound from './NotFound'
 const Router = () => (
   <BrowserRouter>
 	  <Switch>
-      <Route exact path="/" component={App} />
+    	<Route exact path="/" component={App} />
+      <Route exact path="/about" component={About} />
 			<Route path="/accessories/" component={Accessories} />
 			<Route path="/accessories/:name" component={Accessories} />
 			<Route path="/shirts/" component={Shirts} />
