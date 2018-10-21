@@ -44,9 +44,31 @@ class App extends Component {
             accessory={this.state.accessories[key]} 
           />
         ))}
-        <Shirts shirts={this.state.shirts} />
+        {Object.keys(this.state.shirts).map(key => 
+          (<Shirts 
+            key={key} 
+            index={key} 
+            shirt={this.state.shirts[key]}  
+          />
+        ))}
+        {Object.keys(this.state.pants).map(key => 
+          (<Pants 
+            key={key} 
+            index={key} 
+            pants={this.state.pants[key]}
+          />
+        ))}
+        {Object.keys(this.state.shoes).map(key => 
+          (<Shoes 
+            key={key} 
+            index={key} 
+            shoes={this.state.shoes[key]}
+          />
+        ))}
+          
+        {/* <Shirts shirts={this.state.shirts} />
         <Pants pants={this.state.pants} />
-        <Shoes shoes={this.state.shoes} />
+        <Shoes shoes={this.state.shoes} /> */}
       </div>
     )
   }
