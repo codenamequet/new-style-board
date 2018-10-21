@@ -37,7 +37,13 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <Accessories accessories={this.state.accessories} />
+        {Object.keys(this.state.accessories).map(key => 
+          (<Accessories 
+            key={key} 
+            index={key} 
+            accessory={this.state.accessories[key]} 
+          />
+        ))}
         <Shirts shirts={this.state.shirts} />
         <Pants pants={this.state.pants} />
         <Shoes shoes={this.state.shoes} />
