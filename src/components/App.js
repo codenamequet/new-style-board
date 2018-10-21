@@ -42,7 +42,7 @@ class App extends Component {
         <Pants pants={this.state.pants} />
         <Shoes shoes={this.state.shoes} />
       </div>
-    );
+    )
   }
 }
 
