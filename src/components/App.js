@@ -6,6 +6,7 @@ import AddAccessory from './AddAccessory'
 import Shirts from './Shirts'
 import Pants from './Pants'
 import Shoes from './Shoes'
+import AddShoes from './AddShoes'
 import {ACCESSORIES_URL} from '../constants.js'
 import {SHIRTS_URL} from '../constants.js'
 import {PANTS_URL} from '../constants.js'
@@ -32,15 +33,20 @@ class App extends Component {
       this.setState({pants: pantsRes.data.pants})
       this.setState({shoes: shoesRes.data.shoes})
     }))
+    console.log({ACCESSORIES_URL})
   }
 
   addAccessory = accessory => {
     const accessories = {...this.state.accessories}
-    // Add our new accessory to the accessories variable
     accessories[`accessory${Date.now()}`] = accessory
     this.setState({accessories})
   }
 
+  addShoes = shoe => {
+    const shoes = {...this.state.shoes}
+    shoes[`shoes${Date.now()}`] = shoe
+    this.setState({shoes})
+  }
   
 
   render() {
@@ -80,6 +86,10 @@ class App extends Component {
             shoes={this.state.shoes[key]}
           />
         ))}
+        <AddShoes
+        shoes={this.state.shoes}
+        addShoes={this.addShoes}
+        />
           
         {/* <Shirts shirts={this.state.shirts} />
         <Pants pants={this.state.pants} />
