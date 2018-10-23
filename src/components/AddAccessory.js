@@ -30,7 +30,7 @@ class AddAccessory extends Component {
 	// var lastChar = id.substr(id.length - 1);
 	handleSubmit = () => {
 		axios
-		.post(`${ACCESSORIES_URL}/${this.nameRef.current.value}`, {accessory: this.props.accessory})
+		.post({ACCESSORIES_URL}, {accessory: this.props.accessory})
 		.then(res => console.log(res))
 		.catch(err => console.log(err))
 		console.log(`${ACCESSORIES_URL}/${this.nameRef.current.value}`)
