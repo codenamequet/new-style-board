@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Nav from './Nav'
 import Accessories from './Accessories'
+import AddAccessory from './AddAccessory'
 import Shirts from './Shirts'
 import Pants from './Pants'
 import Shoes from './Shoes'
@@ -33,6 +34,15 @@ class App extends Component {
     }))
   }
 
+  addAccessory = accessory => {
+    const accessories = {...this.state.accessories}
+    // Add our new accessory to the accessories variable
+    accessories[`accessory${Date.now()}`] = accessory
+    this.setState({accessories})
+  }
+
+  
+
   render() {
     return (
       <div className="App">
@@ -42,8 +52,10 @@ class App extends Component {
             key={key} 
             index={key} 
             accessory={this.state.accessories[key]} 
+            addAccessory={this.addAccessory}
           />
         ))}
+        <AddAccessory addAccessory={this.addAccessory} />
         {Object.keys(this.state.shirts).map(key => 
           (<Shirts 
             key={key} 
