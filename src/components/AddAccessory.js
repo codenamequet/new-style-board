@@ -26,7 +26,7 @@ class AddAccessory extends Component {
 		}
 		this.props.addAccessory(accessory)
 		// this.handleSubmit()
-		this.componentWillReceiveProps()
+		this.componentWillReceiveProps(accessory)
 		e.currentTarget.reset()
 	}
 	
