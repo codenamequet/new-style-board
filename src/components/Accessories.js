@@ -8,6 +8,14 @@ const accessoriesStyle = {
 }
 
 class Accessories extends Component {
+  // componentDidMount() {
+  //   console.log('props before: ', this.props.accessory)
+  // }
+
+  // componentDidUpdate() {
+  //   console.log('props after: ', this.props.accessory) 
+  // }
+
   render() {
     return (
       <Fragment>

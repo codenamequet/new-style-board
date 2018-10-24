@@ -33,7 +33,6 @@ class App extends Component {
       this.setState({pants: pantsRes.data.pants})
       this.setState({shoes: shoesRes.data.shoes})
     }))
-    console.log({ACCESSORIES_URL})
   }
 
   addAccessory = accessory => {
