@@ -13,7 +13,7 @@ class Accessories extends Component {
   // }
 
   // componentDidUpdate() {
-  //   console.log('props after: ', this.props.accessory) 
+  //   console.log('props after: ', this.props.accessory[]) 
   // }
 
   render() {
