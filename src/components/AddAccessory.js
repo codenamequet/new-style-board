@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {ACCESSORIES_URL} from '../constants.js'
-import { create } from 'domain'
 
 class AddAccessory extends Component {
-  categoryRef = React.createRef()
+	accessoriesArr = []
+	
+	categoryRef = React.createRef()
 	colorRef = React.createRef()
 	imagesRef = React.createRef()
 	nameRef = React.createRef()
@@ -20,42 +21,20 @@ class AddAccessory extends Component {
 			tags: this.tagsRef.current.value
 		}
 		this.props.addAccessory(accessory)
-		// console.log(this.props.accessory)
-		// this.handleSubmit()
-		// this.componentWillReceiveProps(accessory)
+		this.accessoriesArr.push(accessory)
 		e.currentTarget.reset()
 	}
 
 	componentWillReceiveProps = nextProps => {
-		console.log(nextProps.accessory)
-		console.log(Object.keys(nextProps.accessory))
 		axios
-		.post(`${ACCESSORIES_URL}`, {accessory: nextProps})
-		.then(res => console.log(res))
+		.post(`${ACCESSORIES_URL}`, {accessory: this.accessoriesArr})
+		.then(res => {
+			console.log('from componentWillReceiveProps post call, res is', res);
+			console.log('from componentWillReceiveProps post call, res.data is', res.data)
+		})
 		.catch(err => console.log(err))
-		return true
+		// return true
 	}
-
-	// handleSubmit = () => {
-	// 	console.log('props before: ', this.props.accessory)
-	// 	axios
-	// 	.post(`${ACCESSORIES_URL}/`, {accessory: this.props.accessory})
-	// 	.then(res => console.log(res.data))
-	// 	.catch(err => console.log(err))
-	// 	// console.log(`${ACCESSORIES_URL}/${this.nameRef.current.value}`)
-	// 	console.log('props after: ', this.props.accessory)
-	// }
-
-	
-	
-	// componentWillReceiveProps(newProps) {
-	// 	axios
-	// 	.post(`${ACCESSORIES_URL}/`, {accessory: newProps})
-	// 	.then(res => console.log(res.data))
-	// 	.catch(err => console.log(err))
-	// 	// console.log(`${ACCESSORIES_URL}/${this.nameRef.current.value}`)
-	// 	console.log('props after: ', newProps)
-	// }
 
   render() {
     return(
@@ -65,9 +44,8 @@ class AddAccessory extends Component {
 				<input name="images" ref={this.imagesRef} placeholder="Images" />
 				<input name="name" ref={this.nameRef} type="text" placeholder="Name" />
         <input name="tags" ref={this.tagsRef} type="text" placeholder="Tags" />
-				<button type="submit" onSubmit={this.test} onClick={this.handleSubmit}>+ Add Accessory</button>
+				<button type="submit" onSubmit={this.test}>+ Add Accessory</button>
 			</form>
-			// <div></div>
     )
   }
 }
