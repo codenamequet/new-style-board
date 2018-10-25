@@ -3,6 +3,7 @@ import axios from 'axios'
 import Nav from './Nav'
 import Accessories from './Accessories'
 import AddAccessory from './AddAccessory'
+import EditAccessory from './EditAccessory'
 import Shirts from './Shirts'
 import Pants from './Pants'
 import Shoes from './Shoes'
@@ -36,8 +37,25 @@ class App extends Component {
   }
 
   addAccessory = accessory => {
+    // console.log('from App.addAccessory, accessory is', accessory)
     const accessories = {...this.state.accessories}
     accessories[`accessory${Date.now()}`] = accessory
+    this.setState({accessories})
+    console.log('from App.addAccessory, accessories is', this.state.accessories)
+  }
+
+  updateAccessory = (key, updatedAccessory) => {
+    const accessories = {...this.state.accessories}
+    accessories[key] = updatedAccessory
+    this.setState({accessories})
+  }
+
+  deleteAccessory = key => {
+    //take a copy of state
+    const accessories = {...this.state.accessories}
+    //update the state
+    accessories[key] = null
+    //update state
     this.setState({accessories})
   }
 
@@ -61,9 +79,17 @@ class App extends Component {
           />
         ))}
         <AddAccessory 
-        accessory={this.state.accessories}
+        accessories={this.state.accessories}
         addAccessory={this.addAccessory} 
         />
+        {/* {Object.keys(this.state.accessories).map(key => 
+          (<EditAccessory
+            key={key} 
+            index={key} 
+            updateAccessory={this.state.updateAccessory} 
+            deleteAccessory={this.state.deleteAccessory}
+          />
+        ))} */}
         {Object.keys(this.state.shirts).map(key => 
           (<Shirts 
             key={key} 
