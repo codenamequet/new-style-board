@@ -4,6 +4,9 @@ import {ACCESSORIES_URL} from '../constants.js'
 
 
 class EditAccessory extends Component {
+	// 1. Display form with data from item as a placeholder
+	// 2. Update the state with any new value(s)
+
   // handleChange = e => {
 	// 	e.currentTarget.value
 	// 	const updatedAccessory = {...this.props.accessories, [e.currentTarget.name]: e.currentTarget.value}

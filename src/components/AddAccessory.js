@@ -4,7 +4,7 @@ import {ACCESSORIES_URL} from '../constants.js'
 
 class AddAccessory extends Component {
 	accessoriesArr = []
-	
+
 	categoryRef = React.createRef()
 	colorRef = React.createRef()
 	imagesRef = React.createRef()
@@ -33,6 +33,7 @@ class AddAccessory extends Component {
 			console.log('from componentWillReceiveProps post call, res.data is', res.data)
 		})
 		.catch(err => console.log(err))
+		this.accessoriesArr = []
 		// return true
 	}
 
@@ -44,7 +45,7 @@ class AddAccessory extends Component {
 				<input name="images" ref={this.imagesRef} placeholder="Images" />
 				<input name="name" ref={this.nameRef} type="text" placeholder="Name" />
         <input name="tags" ref={this.tagsRef} type="text" placeholder="Tags" />
-				<button type="submit" onSubmit={this.test}>+ Add Accessory</button>
+				<button type="submit">+ Add Accessory</button>
 			</form>
     )
   }

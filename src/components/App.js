@@ -4,6 +4,7 @@ import Nav from './Nav'
 import Accessories from './Accessories'
 import AddAccessory from './AddAccessory'
 import EditAccessory from './EditAccessory'
+import IndividualAccessory from './IndividualAccessory'
 import Shirts from './Shirts'
 import Pants from './Pants'
 import Shoes from './Shoes'
@@ -12,6 +13,7 @@ import {ACCESSORIES_URL} from '../constants.js'
 import {SHIRTS_URL} from '../constants.js'
 import {PANTS_URL} from '../constants.js'
 import {SHOES_URL} from '../constants.js'
+import Route from './Router'
 
 class App extends Component {
   state = {
@@ -82,6 +84,10 @@ class App extends Component {
         accessories={this.state.accessories}
         addAccessory={this.addAccessory} 
         />
+        <IndividualAccessory 
+        accessories={this.state.accessories}
+        updateAccessory={this.updateAccessory} 
+        />
         {/* {Object.keys(this.state.accessories).map(key => 
           (<EditAccessory
             key={key} 
@@ -115,10 +121,7 @@ class App extends Component {
         shoes={this.state.shoes}
         addShoes={this.addShoes}
         />
-          
-        {/* <Shirts shirts={this.state.shirts} />
-        <Pants pants={this.state.pants} />
-        <Shoes shoes={this.state.shoes} /> */}
+        {/* <Route accessories={this.state.accessories} /> */}
       </div>
     )
   }
