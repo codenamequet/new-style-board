@@ -20,11 +20,11 @@ class Accessories extends Component {
     return (
       <Fragment>
         <li className="accessory-list">
-        <Link to={{
+        {/* <Link to={{
           pathname: `/accessories/${this.props.accessory.name}`
-        }}>
+        }}> */}
         <img src={this.props.accessory.images} alt={this.props.accessory.name} style={accessoriesStyle} />
-        </Link>
+        {/* </Link> */}
         </li>
         <div>
         {/* <AddAccessory addAccessory={this.props.addAccessory} /> */}
