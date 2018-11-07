@@ -38,25 +38,6 @@ class App extends Component {
     }))
   }
 
-  Router = () => (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" render={() => <App />} />
-        {/* <Route exact path="/about" render={() => <About />} /> */}
-        {/* <Route path="/accessories/:name" component={IndividualAccessory} /> */}
-        <Route path="/accessories/:name" render={props => <IndividualAccessory {...props}/>} />
-        <Route path="/accessories/" render={props => <Accessories {...props} />} />
-        <Route path="/shirts/:name" component={Shirts} />
-        <Route path="/shirts/" component={Shirts} />
-        <Route path="/pants:name/" component={Pants} />
-        <Route path="/pants/" component={Pants} />
-        <Route path="/shoes/:name" component={Shoes} />
-        <Route path="/shoes/" component={Shoes} />
-        {/* <Route component={NotFound} /> */}
-      </Switch>
-    </BrowserRouter>
-  )
-
   addAccessory = accessory => {
     // console.log('from App.addAccessory, accessory is', accessory)
     const accessories = {...this.state.accessories}
@@ -88,6 +69,24 @@ class App extends Component {
   
 
   render() {
+    const Router = () => (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" render={() => <App />} />
+          {/* <Route exact path="/about" render={() => <About />} /> */}
+          {/* <Route path="/accessories/:name" component={IndividualAccessory} /> */}
+          <Route path="/accessories/:name" render={props => <IndividualAccessory {...props}/>} />
+          <Route path="/accessories/" render={props => <Accessories {...props} />} />
+          <Route path="/shirts/:name" component={Shirts} />
+          <Route path="/shirts/" component={Shirts} />
+          <Route path="/pants:name/" component={Pants} />
+          <Route path="/pants/" component={Pants} />
+          <Route path="/shoes/:name" component={Shoes} />
+          <Route path="/shoes/" component={Shoes} />
+          {/* <Route component={NotFound} /> */}
+        </Switch>
+      </BrowserRouter>
+    )
     return (
       <div className="App">
         <Nav />
